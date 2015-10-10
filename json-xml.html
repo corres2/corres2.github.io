@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Batalla XML JSON</title>
+</head>
+<body style="background:cyan; text-align:justify">
+	<div id="principal">
+		<div id="central" style="width: 1000px; margin:auto; ">
+			<h1 style="color:red; text-align:center">Reporte: diferencia entre XML y JSON</h1>
+			<h3 >XML</h3>
+			<p>
+				XML, siglas en inglés de eXtensible Markup Language ('lenguaje de marcas extensible'), es un lenguaje de marcas desarrollado por el World Wide Web Consortium (W3C) utilizado para almacenar datos en forma legible.<br>
+				Deriva del lenguaje SGML y permite definir la gramática de lenguajes específicos para estructurar documentos grandes.<br>
+
+				XML se ha aceptado como facilitador de la gestión, también se utiliza en la recuperación, el intercambio y la codificación de contenidos y metadatos. La lista de iniciativas puestas en práctica es vasta, y aunque no todas han logrado nivel de aceptación, existen numerosos ejemplos de la aplicación exitosa de este lenguaje en los ámbitos académicos, empresariales e institucionales.<br>
+
+				Un documento XML consiste en etiquetas organizadas de formas herárquicas. Cada etiqueta representa una entidad y su ámbito se extiende hasta que se encuentra la etiqueta complementaria que lo cierra. Cada etiqueta es una marca hecha en el documento, que señala una porción de éste como un elemento. Un pedazo de información con un sentido definido. Las etiquetas tienen la forma <'nombre>, donde nombre es el nombre del elemento que se está señalando.<br>
+
+
+				<h5 >Reglas de los documentos XML</h5>
+				Las especificaciones del XML requieren de un “parser” [1] que rechace los documentos que no cumplan las reglas básicas.<br>
+
+				Para el XML hay tres tipos de documentos: los inválidos, los válidos y los bien formados.<br>
+				<ul>
+				<li>Documentos inválidos no siguen las reglas de sintaxis definidas por la especificación XML. Si un desarrollador tiene reglas definidas de lo que ese documento puede contener en una DTD (Document Type Definition = Definición del tipo de documento) o Esquema, y el documento no las sigue, ese documento es inválido.
+				<li>Documentos válidos siguen tanto las reglas de sintaxis XML como las reglas definidas en su propio DTD o Esquema.
+				<li>Documento bien formado sigue las reglas de sintaxis XML, pero no tiene un Esquema o DTD.
+				</ul>
+
+				<h5>Características</h5>
+				<ul>
+					<li>Permite la creación de etiquetas propias y permite asignar atributos a las etiquetas.
+					<li>En un documento XML la estructura y el diseño están completamente separados.
+					<li>XML se almacena en formato texto (no binario) lo cual hace que los documentos sean directamente entendibles. Es decir, los documentos tienen una estructura entendible tanto por los ordenadores como por las personas.
+					<li>Cada documento incluye metadatos sobre sí mismo, lo cual facilita la tarea de los motores de búsquedas en la web, ya que devolverán respuestas más adecuadas y precisas.
+					<li>Permite la exportabilidad a otros formatos de publicación de datos (HTML, PDF, texto enriquecido RTF, entre otros).
+					<li>XML es un estándar abierto no sujeto a ningún tipo de licencia
+					<li>XML permite la internacionalización, es decir puede trabajar con cualquier conjunto de caracteres, entre ellos el juego de caracteres UNICODE (utf-8).
+					<li>XML utiliza reglas de generación concretas y, por tanto, los documentos son fácilmente procesables.
+					<li>XML permite compartir información entre sistemas o fuentes de datos heterogéneas, por ejemplo, páginas web, distintas bases de datos, entre otras.
+				</ul>
+
+			</p>
+
+			<h3 >JSON</h3>
+			<p>
+				JSON, acrónimo de JavaScript Object Notation, es un formato ligero para el intercambio de datos. JSON es un subconjunto de la notación literal de objetos de JavaScript que no requiere el uso de XML.<br><br>
+
+				JSON es un formato de intercambio de datos abierto y basado en texto (consulte la RFC 4627). Igual que XML, es legible e independiente de la plataforma, además de tener a su disposición una amplia gama de implementaciones. Los datos con formato según el estándar JSON son ligeros y las implementaciones de JavaScript pueden analizarlos sintácticamente con increíble facilidad, prácticamente se puede usar en cualquier escenario en que las aplicaciones necesiten intercambiar o almacenar información estructurada como texto.<br><br>
+
+				JSON está constituído por dos estructuras:<br>
+				<ul>
+				<li>Una colección de pares de nombre/valor. En varios lenguajes esto es conocido como un objeto, registro, estructura, diccionario, tabla hash, lista de claves o un arreglo asociativo.
+				<li>Una lista ordenada de valores. En la mayoría de los lenguajes, esto se implementa como arreglos, vectores, listas o sequencias.
+				</ul>
+				Estas son estructuras universales; virtualmente todos los lenguajes de programación las soportan de una forma u otra. Es razonable que un formato de intercambio de datos que es independiente del lenguaje de programación se base en estas estructuras.<br>
+
+				Los bueno de JSON es su sencillez. Un mensaje con formato según el estándar JSON está compuesto de un único objeto o matriz de nivel superior. Los valores de elementos de matriz y objetos pueden ser objetos, matrices, cadenas, números, valores booleanos (verdadero y falso) o nulo. En definitiva, el estándar JSON es esto. Realmente es así de sencillo.<br><br>
+
+				<h5>De literales de JavaScript a JSON</h5>
+				JSON es un formato de intercambio de datos creado a partir de un subconjunto de la notación de literales de objetos en JavaScript. Aunque JavaScript acepta una sintaxis para valores literales muy flexible, es importante tener en cuenta que JSON posee reglas mucho más estrictas.<br>
+
+				Un objeto literal define los miembros de un objeto y sus valores. La lista de miembros y valores del objeto se encierran entre llaves ({}) y cada miembro está delimitado por una coma. Dentro de cada miembro, el nombre y el valor se delimitan con dos puntos (:). En el ejemplo siguiente se crea un objeto y se inicializa con tres miembros denominados Address, City y PostalCode con sus respectivos valores "123 Anywhere St.","Springfield" y "99999".<br><br>
+
+<pre style="color:blue">
+	var mailingAddress = { <br>
+	     "Address"    :   "123 Anywhere St.", <br>
+	     "City"       :   "Springfield", <br>
+	     "PostalCode" :   99999<br>
+	};<br>
+	alert("The package will be shipped to postal code " +
+	 mailingAddress.PostalCode);
+ </pre>
+
+			</p>
+
+			<h3>VS</h3>
+
+
+			<h5>Comparación entre formatos</h5>
+			<ul>
+			<li>Ambos son simples, abiertos e interoperables de igual manera.
+			<li>Ambos formatos son facilmente distribuibles entre los usuarios.
+
+			<li>JSON solo almacena texto y numeros.
+			<li>XML almacena cualquier tipo de dato imaginable, esto hace a XML la mejor herramienta para compartir documentos. Sin embargo esto lo hace mas complejo a la hora de leerlo.
+
+			<li>Los ficheros JSON son ligeramente más legibles por de formatos de datos que permite
+			<li>Por su capacidad de adjuntar cualquier tipo de fichero, XML puede ser utilizado por terceros como herramientas para mandar ataques via ficheros ejecutables.
+
+			<li>Los datos en XML estan almacenados en arboles.
+			<li>Los datos en JSON estan almacenados en registros y vectores, haciendo a JSON la mejor herramienta para compartir datos.
+			</ul>
+
+
+			<h3>Opinion personal</h3>
+			<p>
+				Claramente ningún formato es el mejor en todo, cada uno tiene sus puntos fuerte y debiles; solo hay que saber elegir el formato adecuado para el trabajo a realizar, tomar en cuenta lo que se debe transferir y lo que se va a recibir.
+			</p>
+			<div style="width:100%; height:100px"></div>
+		</div>
+
+		
+	</div>
+</body>
+</html>
