@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CANVAS</title>
+	<SCRIPT TYPE="text/javascript">
+	
+
+	</SCRIPT>
+
+</head>
+<body onLoad=initialise()>
+	<div id="cajas" style="width:100%;height:30px; float:left">
+		<input id="iw" type="number" value="50">
+		<input id="il" type="number"value="50">
+		<input id="is" type="number" value="1000">
+		<input type="button" name="cambia" value="Cambiar valores" 
+			onclick=" window.reiniciar(1)">
+
+	</div>
+	<canvas id="mycanvas" width="510px" height="510px" style="border: 1px solid #000; ">
+	</canvas>
+	<script type="text/javascript">
+
+	function initialise(){
+		var canvas=document.getElementById("mycanvas");
+		canvas.addEventListener("mousedown",function(event){
+			c_x=event.pageX;
+			c_y=event.pageY	;
+			var pos = document.getElementById("mycanvas").getBoundingClientRect();
+			xx=parseInt(c_x/10-(pos.left/10-1));
+			xy=parseInt(c_y/10-(pos.top/10-1));
+			//alert(mat[xx*10][xy*10]);
+			if(mat[xx][xy]===undefined){
+				ctx.fillRect(((xx-1)*10),((xy-1)*10),10,10);
+				mat[xy][xx]=true;
+			}else{
+				ctx.fillStyle = "#FFF";
+				ctx.fillRect(((xx-1)*10),((xy-1)*10),10,10);
+				mat[xy][xx]=undefined;
+				ctx.fillStyle = "#F00";
+			}
+
+		//alert(parseInt(xx)+"   "+parseInt(xy)+" ");
+		},false);
+	}
+
+
+	var mat=[];
+	var gen=[];
+	var vac=[]
+	lenght=70;
+	width=90
+	speed=1000;
+	aux=0;
+	var canvas,ctx;
+		canvas=document.getElementById("mycanvas");
+		ctx =canvas.getContext("2d");
+		ctx.fillStyle = "#FF0000";
+
+
+
+	function getSpeed(){
+		window.speed=document.getElementById("is").value;
+		return(window.speed);
+	}
+	function cambiar(){
+		//console.log(width)
+		width=document.getElementById("iw").value;
+		
+		lenght=document.getElementById("il").value;
+		window.speed=document.getElementById("is").value;
+
+		document.getElementById("mycanvas").width=parseInt(window.width)*10+10;
+		document.getElementById("mycanvas").height=parseInt(window.lenght)*10+10;
+		ctx.fillStyle = "#FF0000";
+		//reiniciar();
+	}
+
+	function inicializar(){
+		for(i=0;i<=lenght+2;i++){
+			mat[i]=new Array(width+2);
+			gen[i]=new Array(width+2);
+			vac[i]=new Array(width+2);
+		}
+	}
+	function generacionCero(){
+		for(i=1;i<=lenght;i++){
+			s="";
+			for(j=1;j<=width;j++){
+				if(Math.random()<.50){
+					mat[i][j]=true;
+				}
+			}
+		}
+	}	
+
+	function imprimir(){
+		ctx.clearRect(0, 0, 900, 900);
+		for(i=1;i<=lenght;i++){
+			s="";
+			for(j=1 ;j<=width;j++){
+				if(mat[i][j]==true){
+					ctx.fillRect((j-1)*10,(i-1)*10,10,10);	
+					s+="*"
+				}else{
+					s+="-";
+				}
+			}
+			//console.log(s);
+		}
+	}	
+
+	function reiniciar(a){
+		//alert("")
+		aux=a;
+		cambiar();
+		console.log("FUNCION REINICIAR");
+		inicializar();
+		generacionCero();
+		imprimir();
+	}
+	reiniciar(0);
+
+
+
+
+	function generacion(){
+
+		for(i=1;i<=lenght;i++){
+			for(j=1;j<=width;j++){
+				gen[i][j]=mat[i][j];
+				mat[i][j]=vac[i][j];
+
+			}
+		}
+
+		for(i=1;i<=lenght;i++){
+			for(j=1 ;j<=width;j++){
+				cont=0;
+				if(gen[i-1][j-1]===true){
+					cont++;
+				}
+				if(gen[i-1][j]===true){
+					cont++;
+				}
+
+				if(gen[i-1][j+1]===true){
+					cont++;
+				}
+				if(gen[i][j-1]===true){
+					cont++;
+				}
+				if(gen[i][j+1]===true){
+					cont++;
+				}
+				if(gen[i+1][j-1]===true){
+					cont++;
+				}
+				if(gen[i+1][j]===true){
+					cont++;
+				}
+				if(gen[i+1][j+1]===true){
+					cont++;
+				}
+				/*console.log(gen[i-1][j-1] +" " +gen[i-1][j] +" "+ gen[i-1][j+1]);
+				console.log(gen[i][j-1] +" " + gen[i][j+1]);
+				console.log(gen[i+1][j-1]  +" "+ gen[i+1][j]  +" "+ gen[i+1][j+1] + cont +"\n");*/
+
+					//console.log(cont);
+				if(gen[i][j]==true){
+					if(cont==2 || cont==3){
+						mat[i][j]=true;
+					}else{
+						mat[i][j]=undefined;
+					}
+					 
+				}else{
+					if(cont==3){
+						mat[i][j]=true;
+					}else{
+						mat[i][j]=undefined;
+					}
+				}				
+			}			
+		}
+		console.log("\n");
+		imprimir();
+	}
+	
+	function iniciar(){
+		itv=setInterval(function(){
+			if(aux==1){
+				aux=0;
+				console.log("Entro al IF--- valor de aux= "+aux);
+				clearInterval(itv);
+				iniciar();
+			}else{
+				generacion();
+			}
+		},getSpeed());
+	}
+	iniciar();
+		
+				
+
+		
+
+ 		</script>
+</body>
+</html>
